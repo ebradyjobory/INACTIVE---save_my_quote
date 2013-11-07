@@ -1,6 +1,6 @@
 <h1>Listing quotes</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -11,14 +11,17 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody> -->
     <% @quotes.each do |quote| %>
       <tr>
-        <td><%= quote.name %></td>
-        <td><%= quote.content %></td>
+        <p>
+        
+        <td><%= quote.content %></td></p>
+        <div>
         <td><%= link_to 'Show', quote %></td>
         <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
         <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </div>
       </tr>
     <% end %>
   </tbody>
