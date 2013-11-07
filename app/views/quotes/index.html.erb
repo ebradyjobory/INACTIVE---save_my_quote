@@ -15,7 +15,7 @@
     <% @quotes.each do |quote| %>
       <tr>
         <p>
-        
+        <td><%= quote.user.first_name %><%= quote.user.last_name %></td></p>
         <td><%= quote.content %></td></p>
         <div>
         <td><%= link_to 'Show', quote %></td>
