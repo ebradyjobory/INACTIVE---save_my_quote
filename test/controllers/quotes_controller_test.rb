@@ -11,14 +11,21 @@ class QuotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:quotes)
   end
 
-  test "should get new" do
+  test "should be redirected when not login" do
+    get :new
+    assert_response :redirect
+    assert_redirected_to  new_user_session_path
+  end
+
+  test "should render the new page when logged in" do
+    sign_in users(:essam)
     get :new
     assert_response :success
   end
 
   test "should create quote" do
     assert_difference('Quote.count') do
-      post :create, quote: { content: @quote.content, name: @quote.name }
+      post :create, quote: { content: @quote.content }
     end
 
     assert_redirected_to quote_path(assigns(:quote))
@@ -35,7 +42,7 @@ class QuotesControllerTest < ActionController::TestCase
   end
 
   test "should update quote" do
-    patch :update, id: @quote, quote: { content: @quote.content, name: @quote.name }
+    patch :update, id: @quote, quote: { content: @quote.content }
     assert_redirected_to quote_path(assigns(:quote))
   end
 
