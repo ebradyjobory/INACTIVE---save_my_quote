@@ -18,5 +18,11 @@ test "that variables are assigned on successful profile viewing" do
    assert_not_empty assigns(:quotes)
 end
 
+test "only shows the correct user's quote" do
+	get :show, id: users(:essam).profile_name
+	assigns(:quotes).each do |quote|
+		assert_equal users(:essam), quote.user
+	end
 
+end
 end

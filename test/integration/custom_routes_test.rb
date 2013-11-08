@@ -18,6 +18,11 @@ get '/register'
 assert_response :success
 end
 
+test "that a profile page works"
+get '/ejoubori'
+assert_response :success
+
+end
 
 
 
