@@ -8,6 +8,11 @@ gem 'sqlite3'
 gem 'devise'
 gem 'simple_form'
 
+group :development do
+  gem 'guard'
+  gem 'guard-minitest'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
