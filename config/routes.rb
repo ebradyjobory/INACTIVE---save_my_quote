@@ -1,5 +1,6 @@
 QuoterApplication::Application.routes.draw do
   
+  get "profiles/show"
   devise_for :users
 
   devise_scope :user do
@@ -12,6 +13,8 @@ QuoterApplication::Application.routes.draw do
   resources :quotes
   get 'home', to: 'quotes#index', as: :home
   root :to => "quotes#index"
+
+  get '/:id', to: 'profiles#show'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
