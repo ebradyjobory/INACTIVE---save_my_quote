@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   def index
     @quotes = Quote.all
   end
@@ -62,6 +62,6 @@ class QuotesController < ApplicationController
 
     
     def quote_params
-      params.require(:quote).permit(:content, :user_id)
+      params.require(:quote).permit(:content, :user_id) if params[:quote]
     end
 end
