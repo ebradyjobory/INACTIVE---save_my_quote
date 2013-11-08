@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   has_many :quotes
 
   def full_name
-  email
+  first_name + " " + last_name
   end   
 end
