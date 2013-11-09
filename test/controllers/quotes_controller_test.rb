@@ -32,7 +32,7 @@ end
   test "should create quote when loggeg in" do
     sign_in users(:essam)
     assert_difference('Quote.count') do
-      post :create, quote: { content: @quote.content }
+      post :create, quote: { content: @quote.content, user_id: users(:essam).id }
     end
   end
 

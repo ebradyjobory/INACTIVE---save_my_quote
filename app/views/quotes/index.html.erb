@@ -14,8 +14,13 @@
   <tbody> -->
     <% @quotes.each do |quote| %>
       <tr>
+        <div>
+          <%= image_tag quote.user.gravatar_url %>
+
+
+        </div>
         <p>
-        <td><%= quote.user.full_name %></td></p>
+        <td><strong><%= quote.user.full_name %></strong></td></p>
         <td><%= quote.content %></td></p>
         <div>
         <td><%= link_to 'Show', quote %></td>
