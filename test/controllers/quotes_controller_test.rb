@@ -11,6 +11,30 @@ class QuotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:quotes)
   end
 
+  test "user create quote for the current user when logged in" do
+   sign_in users(:essam)
+   assert_difference('Quote.count') do
+      post :create, quote: { content: @quote.content, user_id: users(:tim).id }
+   end
+     assert_redirected_to quote_path(assigns(:quote))
+     assert_equal assigns(:quote).user_id, users(:essam).id
+  end
+
+   test "user update quote for the current user when logged in" do
+   sign_in users(:essam)
+   put :update, id: @quote, quote: { content: @quote.content, user_id: users(:tim).id}
+   assert_redirected_to quote_path(assigns(:quote))
+   assert_equal assigns(:quote).user_id, users(:essam).id
+  end
+
+
+  test "should not update the quote if nothing has changed" do
+   sign_in users(:essam)
+   put :update, id: @quote
+   assert_redirected_to quote_path(assigns(:quote))
+   assert_equal assigns(:quote).user_id, users(:essam).id
+  end
+
   test "should be redirected when not login" do
     get :new
     assert_response :redirect
@@ -29,11 +53,13 @@ class QuotesControllerTest < ActionController::TestCase
   assert_redirected_to new_user_session_path
 end
 
+
   test "should create quote when loggeg in" do
     sign_in users(:essam)
     assert_difference('Quote.count') do
       post :create, quote: { content: @quote.content, user_id: users(:essam).id }
     end
+    assert_redirected_to quote_path(assigns(:quote))
   end
 
   test "should edit quote when loggeg in" do

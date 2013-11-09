@@ -19,7 +19,7 @@ class QuotesController < ApplicationController
 
   
   def create
-    @quote = Quote.new(quote_params)
+    @quote = current_user.quotes.new(quote_params)
 
     respond_to do |format|
       if @quote.save
@@ -33,6 +33,10 @@ class QuotesController < ApplicationController
   end
 
   def update
+    @quote = current_user.quotes.find(params[:id])
+     if params[:quote] && params[:quote].has_key?(:user_id)
+      params[:quote].delete(:user_id)
+    end
     respond_to do |format|
       if @quote.update(quote_params)
         format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
