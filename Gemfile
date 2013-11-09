@@ -4,14 +4,17 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 gem 'devise'
 gem 'simple_form'
 
-group :development do
-  gem 'guard'
-  gem 'guard-minitest'
+group :development, :test do
+  gem 'sqlite3'
 end
+
+group :production do
+  gem 'pg'
+end 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
