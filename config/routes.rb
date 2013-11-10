@@ -9,7 +9,7 @@ QuoterApplication::Application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy', as: :logout
 
   end
-
+  resources :user_friendships
   resources :quotes
   get 'home', to: 'quotes#index', as: :home
   root :to => "quotes#index"

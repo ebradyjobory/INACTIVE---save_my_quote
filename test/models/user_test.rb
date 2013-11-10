@@ -66,9 +66,5 @@ test "that creating friendship on a user works" do
 	assert users(:tim).friends.include?(users(:miwa))
 end
 
-test "that creating friendship based on user id and friend id works" do
-	UserFriendship.create user_id: users(:tim).id, friend_id: users(:miwa).id
-	assert users(:tim).friends.include?(users(:miwa))
 
-	end
 end
