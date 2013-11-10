@@ -35,6 +35,8 @@ class QuotesControllerTest < ActionController::TestCase
    assert_equal assigns(:quote).user_id, users(:essam).id
   end
 
+
+
   test "should be redirected when not login" do
     get :new
     assert_response :redirect
