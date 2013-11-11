@@ -15,7 +15,7 @@
     <% @quotes.each do |quote| %>
       <tr>
         <div>
-          <%= image_tag quote.user.gravatar_url %>
+          <%= link_to image_tag(quote.user.gravatar_url), profile_path(quote.user) %>
 
 
         </div>

@@ -66,5 +66,9 @@ test "that creating friendship on a user works" do
 	assert users(:tim).friends.include?(users(:miwa))
 end
 
+test "that calling to_param on a user return the profile name" do
+   assert_equal "ejoubori", users(:essam).to_param
+  end
+
 
 end

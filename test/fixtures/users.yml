@@ -3,15 +3,22 @@ essam:
     last_name: "Joubori"
     email: "essam.joubori@gmail.com"
     profile_name: "ejoubori"
-
+    encrypted_password: "$2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq"
 tim:
     first_name: "Tim"
     last_name: "Brady"
     email: "tbrady@gmail.com"
     profile_name: "tbrady"
+    encrypted_password: "$2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq"
 
 miwa: 
     first_name: "Miwa"
     last_name: "Miwach"
     email: "miwa@gmail.com"
     profile_name: "miwach"
+
+mike:
+    first_name: "Mike"
+    last_name: "Mikee"
+    email: "mike@gmail.com"
+    profile_name: "mikemikee"
