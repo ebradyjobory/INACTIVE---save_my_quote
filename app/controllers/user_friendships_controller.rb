@@ -1,5 +1,5 @@
 class UserFriendshipsController < ApplicationController
-    before_filter :authenticate_user!, only: [:new]
+    before_filter :authenticate_user!
 	def new
        if params[:friend_id]
        	@friend = User.where(profile_name: params[:friend_id]).first
@@ -8,9 +8,27 @@ class UserFriendshipsController < ApplicationController
        else
        	flash[:error] = "Friend required"
 	end
-rescue ActiveRecord::RecordNotFound
-	render file: 'public/404', status: :not_found
+   rescue ActiveRecord::RecordNotFound
+	 render file: 'public/404', status: :not_found
   end
+
+  def index
+    @user_friendships = current_user.user_friendships.all
+    
+  end
+
+  def accept
+    @user_friendship = current_user.user_friendships.find(params[:id])
+    if @user_friendship.accept!
+      flash[:success]= "You are now friends with #{@user_friendship.friend.first_name}"
+
+    else
+      flash[:error] = "That friendship could not be accepted."
+    end
+    redirect_to user_friendships_path
+
+  end
+ 
 
   def create
 
@@ -25,6 +43,10 @@ rescue ActiveRecord::RecordNotFound
   		redirect_to root_path
   	end
 
+  end
+  def edit
+    @friend = User.where(profile_name: params[:id]).first 
+    @user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first
   end
 
 end

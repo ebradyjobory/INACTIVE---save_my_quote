@@ -61,9 +61,9 @@ test "that no error raised when trying to access friend list" do
 end
 
 test "that creating friendship on a user works" do
-	users(:tim).friends << users(:miwa)
-	users(:tim).friends.reload
-	assert users(:tim).friends.include?(users(:miwa))
+	users(:tim).pending_friends << users(:miwa)
+	users(:tim).pending_friends.reload
+	assert users(:tim).pending_friends.include?(users(:miwa))
 end
 
 test "that calling to_param on a user return the profile name" do

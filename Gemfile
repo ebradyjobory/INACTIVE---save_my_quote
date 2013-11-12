@@ -7,9 +7,11 @@ gem 'rails', '4.0.0'
 
 gem 'devise'
 gem 'simple_form'
+gem 'state_machine'
 
 group :test do
   gem 'shoulda'
+  gem 'factory_girl_rails'
 end
 
 group :development, :test do

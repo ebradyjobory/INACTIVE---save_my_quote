@@ -11,6 +11,7 @@
 	<%= link_to "Quoter", home_path %>
 	<%= link_to "Home", home_path %>
 		<% if user_signed_in? %>
+		    <%= link_to 'Friends', user_friendships_path %>
 	  
 			<%= link_to current_user.full_name, edit_user_registration_path %>
 			<%= link_to'Logout', logout_path %>
